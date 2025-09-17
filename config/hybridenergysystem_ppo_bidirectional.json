@@ -1,0 +1,74 @@
+{
+    "setup": {
+        "environment_package": "environment.hybridenergysystem_bidirectional_charging",
+        "environment_class": "Hybridenergysystem",
+        "agent_package": "stable_baselines3.ppo.ppo",
+        "agent_class": "PPO",
+        "vectorizer_package": "stable_baselines3.common.vec_env.subproc_vec_env",
+        "vectorizer_class": "SubprocVecEnv",
+        "policy_package": "stable_baselines3.ppo",
+        "policy_class": "MlpPolicy",
+        "tensorboard_log": true,
+        "monitor_wrapper": true,
+        "norm_wrapper_obs": true,
+        "norm_wrapper_reward": true,
+        "norm_wrapper_clip_obs": 10.0
+    },
+    "paths": {
+        "relpath_scenarios": "data",
+        "relpath_results": "results"
+    },
+    "settings": {
+        "sampling_time": 30,
+        "control_interval": 1,
+        "save_model_every_x_episodes": 100,
+        "episode_duration": 259200,
+        "n_episodes_learn": 1000,
+        "n_episodes_play": 10,
+        "n_environments": 4
+    },
+    "environment_specific": {
+        "plot_interval": 100,
+        "seed": 123,
+        "variant": "default",
+        "discretize_state_space": false,
+        "discretize_action_space": true,
+        "n_action_disc_steps": 10,
+        "normalize_state_space": false,
+        "normalize_reward": false,
+        "reward_shaping": false,
+        "temperature_difference_top_bottom": 20,
+        "scenario_time_begin": "2021-4-1 00:00",
+        "scenario_time_end": "2021-8-1 00:00",
+        "SOC_high":0.9,
+        "SOC_low":0.3,
+        "scenario_csv_factory": "Factory_2021",
+        "scenario_csv_energymarkets": "EnergyMarkets_2017",
+        "scenario_csv_usage": "LastenETA_2021datum",
+        "scenario_factory_scale_electric": 12.5,
+        "abort_costs": 50000,
+        "policyshaping_costs": 5000,
+        "power_cost_max": 320000,
+        "activation_energy":24000,
+        "tax_el_per_kwh": 0.10,
+        "tax_el_produced_per_kwh": 0.05,
+        "tax_gas_per_kwh": 0.02,
+        "peak_cost_per_kw": 1.0
+    },
+    "agent_specific": {
+        "gamma": 0.99,
+        "n_steps": 256,
+        "ent_coef": 0.01,
+        "learning_rate": 0.00020,
+        "vf_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "gae_lambda": 0.95,
+        "batch_size": 256,
+        "n_epochs": 4,
+        "clip_range": 0.2,
+        "verbose": 1,
+        "policy_kwargs": {
+            "net_arch": [500, 400, 300]
+        }
+    }
+}
